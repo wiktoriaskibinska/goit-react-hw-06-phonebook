@@ -29,11 +29,12 @@ const ContactForm = () => {
     );
     if (isInContactsList) {
       alert(`${newContact.name} is already in the contact list`);
+      console.log(';(');
     } else {
       dispatch(addContact(newContact));
+      console.log(';)');
     }
-    console.log('Contacts:', contacts);
-
+    console.log(contacts);
     /*const addContact = contact => {
       const isInContactsList = contacts.some(
         ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
