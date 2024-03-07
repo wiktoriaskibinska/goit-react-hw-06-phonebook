@@ -3,7 +3,7 @@ import ContactForm from './contactform/ContactForm';
 import ContactList from './contactlist/ContactList';
 import Filter from './filter/Filter';
 import { useEffect } from 'react';
-import { UseDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getContacts } from 'myredux/selectors';
 
 export const App = () => {

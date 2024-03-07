@@ -28,6 +28,7 @@ const ContactForm = () => {
       alert(`${newContact.name} is already in the contact list`);
     } else {
       dispatch(addContact(newContact));
+      evt.target.reset();
     }
   };
 
