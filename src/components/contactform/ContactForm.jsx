@@ -21,34 +21,14 @@ const ContactForm = () => {
       name: name,
       number: number,
     };
-    console.log('Contacts:', contacts);
-    console.log('New contact:', newContact);
-
     const isInContactsList = contacts.some(
       ({ number }) => number === newContact.number
     );
     if (isInContactsList) {
       alert(`${newContact.name} is already in the contact list`);
-      console.log(';(');
     } else {
       dispatch(addContact(newContact));
-      console.log(';)');
     }
-    console.log(contacts);
-    /*const addContact = contact => {
-      const isInContactsList = contacts.some(
-        ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
-      );
-
-      if (isInContactsList) {
-        alert(`${contact.name} is already in contact list`);
-      } else {
-        setContacts(prevContacts => [
-          { id: nanoid(), ...contact },
-          ...prevContacts,
-        ]);
-      }
-    }; */
   };
 
   return (
