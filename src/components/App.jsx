@@ -1,7 +1,6 @@
 import React from 'react';
 import ContactForm from './contactform/ContactForm';
 import ContactList from './contactlist/ContactList';
-import { nanoid } from 'nanoid';
 import Filter from './filter/Filter';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -15,21 +14,6 @@ export const App = () => {
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  const addContact = contact => {
-    const isInContactsList = contacts.some(
-      ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
-    );
-
-    if (isInContactsList) {
-      alert(`${contact.name} is already in contact list`);
-    } else {
-      setContacts(prevContacts => [
-        { id: nanoid(), ...contact },
-        ...prevContacts,
-      ]);
-    }
-  };
 
   const onFilterChange = evt => {
     setFilter(evt.target.value);
@@ -64,7 +48,7 @@ export const App = () => {
     >
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onFormSubmit={addContact} />
+        <ContactForm />
         <h2>Contacts</h2>
         {contacts.length > 0 ? (
           <Filter onFilterChange={onFilterChange} />
