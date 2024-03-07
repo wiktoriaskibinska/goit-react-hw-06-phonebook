@@ -2,27 +2,31 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'myredux/selectors';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from 'myredux/contactsSlice';
-
+import { useSelector } from 'react-redux';
+import { getFilter, getContacts } from 'myredux/selectors';
 const ContactList = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
   const onContactDelete = evt => {
     const idToDelete = evt.target.value;
     dispatch(deleteContact(idToDelete));
   };
-  /* const onContactDelete = evt => {
-    const idToDelete = evt.target.value;
-    setContacts(prevContacts =>
-      prevContacts.filter(({ id }) => id !== idToDelete)
+
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
-  }; */
+  };
+  const visibleContacts = getVisibleContacts();
 
   return (
     <ul className={css.contactList}>
-      {contacts.map(contact => (
+      {visibleContacts.map(contact => (
         <ContactListItem
           contact={contact}
           onContactDelete={onContactDelete}

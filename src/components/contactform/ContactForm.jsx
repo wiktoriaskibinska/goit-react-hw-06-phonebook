@@ -59,7 +59,4 @@ const ContactForm = () => {
   );
 };
 
-/*ContactForm.propTypes = {
-  onFormSubmit: PropTypes.func,
-};*/
 export default ContactForm;

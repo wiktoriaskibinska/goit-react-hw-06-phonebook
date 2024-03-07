@@ -8,7 +8,7 @@ import { getContacts } from 'myredux/selectors';
 
 export const App = () => {
   const contacts = useSelector(getContacts);
-  console.log(contacts);
+
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
@@ -42,7 +42,7 @@ export const App = () => {
           alignItems: 'center',
         }}
       >
-        <ContactList contacts={contacts} />
+        <ContactList />
       </div>
     </div>
   );
